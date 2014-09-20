@@ -1,16 +1,14 @@
+
 <div class="page page-profile">
 
-    <div class="row" data-ng-controller="ProfileCtrl">
+    <div class="row">
         <div class="col-md-6">
 
-	        <!--<pre>{{currentUser}}</pre>-->
             <div class="panel panel-profile">
                 <div class="panel-heading text-center bg-info">
-                    <img alt="" ng-src="{{main.image}}" class="img-circle img80_80">
+                    <img alt="" src="images/g1.jpg" class="img-circle img80_80">
                     <h3>{{main.name}}</h3>
-                    <p data-ng-if="currentUser.is_sys_admin === true">System Administrator</p>
-                    <p data-ng-if="currentUser.is_sys_admin != true && currentUser.role_id == 3">Shop Owner</p>
-                    <p data-ng-if="currentUser.is_sys_admin != true && currentUser.role_id != 3">Guest</p>
+                    <p>Project Manager</p>                    
                 </div>
                 <div class="list-justified-container">
                     <ul class="list-justified text-center">
@@ -30,7 +28,7 @@
                 </div>
             </div>
 
-            <!--<div class="row">
+            <div class="row">
                 <div class="col-sm-6">
                     <section class="panel panel-box">
                         <div class="panel-top bg-facebook">
@@ -73,14 +71,14 @@
                         </div>
                     </section>                        
                 </div>
-            </div>-->
+            </div>
 
 
           
         </div>
         <div class="col-md-6">
 
-            <!--<div class="row">
+            <div class="row">
                 <div class="col-sm-6">
                     <div class="panel mini-box">
                         <span class="box-icon bg-danger">
@@ -103,8 +101,8 @@
                         </div>
                     </div>                    
                 </div>
-            </div>-->
-            <!--<div class="row">
+            </div>
+            <div class="row">
                 <div class="col-sm-6">
                     <div class="panel mini-box">
                         <span class="box-icon bg-success">
@@ -127,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-            </div>-->
+            </div>
 
             <div class="panel panel-default">
                 <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Profile Info</strong></div>
@@ -143,23 +141,23 @@
                                 <li>
                                     <span class="icon glyphicon glyphicon-envelope"></span>
                                     <label>Email</label>
-                                    {{currentUser.email}}
+                                    name@example.com
                                 </li>
                                 <li>
-                                    <span class="icon glyphicon glyphicon-calendar"></span>
-                                    <label>Last Login</label>
-                                    {{currentUser.last_login_date}}
+                                    <span class="icon glyphicon glyphicon-home"></span>
+                                    <label>Address</label>
+                                    Street 123, Avenue 45, Country
                                 </li>
                                 <li>
-                                    <span class="icon glyphicon glyphicon-briefcase"></span>
-                                    <label>Shop</label>
-                                    {{}}
+                                    <span class="icon glyphicon glyphicon-earphone"></span>
+                                    <label>Contact</label>
+                                    (+012) 345 6789
                                 </li>
-                                <!--<li>
+                                <li>
                                     <span class="icon glyphicon glyphicon-flag"></span>
                                     <label>Nationality</label>
                                     Australia
-                                </li>-->
+                                </li>
                             </ul>
                             
                         </div>
@@ -169,7 +167,7 @@
         </div>
     </div>
 
-    <!--<div class="panel panel-default">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Line Chart</h3>
         </div>
@@ -180,6 +178,6 @@
                  style="width: 100%; height: 300px;"
                  ></div>
         </div>
-    </div>-->
+    </div>    
 
 </div>

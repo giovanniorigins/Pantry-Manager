@@ -270,42 +270,49 @@
     <section class="panel panel-default">
         <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Accordion or Collapse</div>
         <div class="panel-body" data-ng-controller="AccordionDemoCtrl">
-            <p>Open only one at a time?</p>
-            <label class="switch switch-success"><input type="checkbox" ng-model="oneAtATime"><i></i></label>
-            <hr>
-            <accordion close-others="oneAtATime" class="ui-accordion">
-                <accordion-group heading="Static Header, initially expanded" is-open="true">
-                    This content is straight in the template.
-                </accordion-group>
-                <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
-                    {{group.content}}
-                </accordion-group>
-            </accordion>
+            <div class="row">
+                <div class="col-lg-2">
+                    <p>Open only one at a time?</p>
+                    <label class="switch switch-success"><input type="checkbox" ng-model="oneAtATime"><i></i></label>
+                    <hr>                    
+                </div>
+                <div class="col-lg-10">
+                    <accordion close-others="oneAtATime" class="ui-accordion">
+                        <accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen">
+                            This content is straight in the template.
+                        </accordion-group>
+                        <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+                            {{group.content}}
+                        </accordion-group>
+                    </accordion>                    
+                </div>
+            </div>
+
         
             <hr>
             <div class="row">
                 <div class="col-md-6">
                     <accordion close-others="oneAtATime" class="ui-accordion ui-accordion-success">
-                        <accordion-group heading="Consectetur adipisicing elit" is-open="true">
+                        <accordion-group heading="Consectetur adipisicing elit" is-open="status.isFirstOpen1">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, totam, iusto, quibusdam, voluptates ullam consequuntur facilis odio magni error fugit architecto a.
                         </accordion-group>
-                        <accordion-group heading="Temporibus consequatur vel veritatis" is-open="false">
+                        <accordion-group heading="Temporibus consequatur vel veritatis">
                             Asperiores, natus error eveniet velit id labore quo necessitatibus. Voluptatum, eaque, vel explicabo nobis nulla quasi veritatis reprehenderit quam pariatur culpa magni perferendis voluptas quas.
                         </accordion-group>
-                        <accordion-group heading="Vel veritatis corrupti minima" is-open="false">
+                        <accordion-group heading="Vel veritatis corrupti minima">
                              Ab, unde, quasi harum voluptatum voluptate quaerat repudiandae doloremque aut deserunt laborum nisi fugit maiores ex vero quisquam dignissimos recusandae reprehenderit sint illum?
                         </accordion-group>
                     </accordion>
                 </div>
                 <div class="col-md-6">
                     <accordion close-others="oneAtATime" class="ui-accordion ui-accordion-info">
-                        <accordion-group heading="Consectetur adipisicing elit" is-open="false">
+                        <accordion-group heading="Consectetur adipisicing elit" is-open="status.isFirstOpen2">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, totam, iusto, quibusdam, voluptates ullam consequuntur facilis odio magni error fugit architecto a.
                         </accordion-group>
-                        <accordion-group heading="Temporibus consequatur vel veritatis" is-open="true">
+                        <accordion-group heading="Temporibus consequatur vel veritatis">
                             Asperiores, natus error eveniet velit id labore quo necessitatibus. Voluptatum, eaque, vel explicabo nobis nulla quasi veritatis reprehenderit quam pariatur culpa magni perferendis voluptas quas.
                         </accordion-group>
-                        <accordion-group heading="Vel veritatis corrupti minima" is-open="false">
+                        <accordion-group heading="Vel veritatis corrupti minima">
                              Ab, unde, quasi harum voluptatum voluptate quaerat repudiandae doloremque aut deserunt laborum nisi fugit maiores ex vero quisquam dignissimos recusandae reprehenderit sint illum?
                         </accordion-group>                    
                     </accordion>
@@ -314,26 +321,26 @@
             <div class="row">
                 <div class="col-md-6">
                     <accordion close-others="oneAtATime" class="ui-accordion ui-accordion-warning">
-                        <accordion-group heading="Consectetur adipisicing elit" is-open="false">
+                        <accordion-group heading="Consectetur adipisicing elit" is-open="status.isFirstOpen3">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, totam, iusto, quibusdam, voluptates ullam consequuntur facilis odio magni error fugit architecto a.
                         </accordion-group>
-                        <accordion-group heading="Temporibus consequatur vel veritatis" is-open="false">
+                        <accordion-group heading="Temporibus consequatur vel veritatis">
                             Asperiores, natus error eveniet velit id labore quo necessitatibus. Voluptatum, eaque, vel explicabo nobis nulla quasi veritatis reprehenderit quam pariatur culpa magni perferendis voluptas quas.
                         </accordion-group>
-                        <accordion-group heading="Vel veritatis corrupti minima" is-open="true">
+                        <accordion-group heading="Vel veritatis corrupti minima">
                              Ab, unde, quasi harum voluptatum voluptate quaerat repudiandae doloremque aut deserunt laborum nisi fugit maiores ex vero quisquam dignissimos recusandae reprehenderit sint illum?
                         </accordion-group>
                     </accordion>
                 </div>
                 <div class="col-md-6">
                     <accordion close-others="oneAtATime" class="ui-accordion ui-accordion-danger">
-                        <accordion-group heading="Consectetur adipisicing elit" is-open="true">
+                        <accordion-group heading="Consectetur adipisicing elit" is-open="status.isFirstOpen4">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, totam, iusto, quibusdam, voluptates ullam consequuntur facilis odio magni error fugit architecto a.
                         </accordion-group>
-                        <accordion-group heading="Temporibus consequatur vel veritatis" is-open="false">
+                        <accordion-group heading="Temporibus consequatur vel veritatis">
                             Asperiores, natus error eveniet velit id labore quo necessitatibus. Voluptatum, eaque, vel explicabo nobis nulla quasi veritatis reprehenderit quam pariatur culpa magni perferendis voluptas quas.
                         </accordion-group>
-                        <accordion-group heading="Vel veritatis corrupti minima" is-open="false">
+                        <accordion-group heading="Vel veritatis corrupti minima">
                              Ab, unde, quasi harum voluptatum voluptate quaerat repudiandae doloremque aut deserunt laborum nisi fugit maiores ex vero quisquam dignissimos recusandae reprehenderit sint illum?
                         </accordion-group>                    
                     </accordion>
@@ -342,8 +349,6 @@
         </div>
     </section>
     <!-- end Accordion -->
-
-
 
 
     <div class="row">
@@ -377,11 +382,11 @@
                     <br>
                     <button class="btn btn-w-lg btn-success btn-gap" tooltip-placement="right" tooltip="On the Right!" tooltip-append-to-body="true">Tooltip on Right</button>
                     <br>
-                    <button class="btn btn-w-lg btn-info btn-gap" tooltip-placement="bottom" tooltip="On the Bottom!" tooltip-append-to-body="true">Tooltip on Bottom</button>
+                    <button class="btn btn-w-lg btn-info btn-gap" tooltip-animation="false" tooltip="I don't fade. :-(" tooltip-append-to-body="true">Without Animation</button>
                     <br>
                     <button class="btn btn-w-lg btn-warning btn-gap" tooltip-popup-delay='1000' tooltip='appears with delay' tooltip-append-to-body="true">Tooltip Delayed</button>
                     <br>
-                    <button class="btn btn-w-lg btn-danger btn-gap" tooltip-animation="false" tooltip="I don't fade. :-(" tooltip-append-to-body="true">Tooltip without Animation</button>
+                    <button class="btn btn-w-lg btn-danger btn-gap" tooltip-placement="bottom" tooltip="On the Bottom!" tooltip-append-to-body="true">Tooltip on Bottom</button>
                 </div>
             </section>
             <!-- end Tooltip -->
@@ -411,19 +416,6 @@
                     <span class="label label-warning">Warning</span>
                     <div class="space"></div>
                     <span class="label label-danger">Danger</span>
-                    <div class="divider"></div>
-                    <p class="text-muted">Badges</p>
-                    <span class="badge">7</span>
-                    <div class="space"></div>
-                    <span class="badge badge-primary">1</span>
-                    <div class="space"></div>
-                    <span class="badge badge-success">2</span>
-                    <div class="space"></div>
-                    <span class="badge badge-info">4</span>
-                    <div class="space"></div>
-                    <span class="badge badge-warning">8</span>
-                    <div class="space"></div>
-                    <span class="badge badge-danger">16</span>
                 </div>
             </section>
             <!-- end Labels -->
@@ -450,10 +442,14 @@
                         </div>
                     </script>
 
-                    <button class="btn btn-primary" ng-click="open()">Open me!</button>
+                    <button class="btn btn-gap-v btn-primary" ng-click="open()">Open me!</button>
+                    <button class="btn btn-gap-v btn-info" ng-click="open()">Open me!</button>
+                    <button class="btn btn-gap-v btn-warning" ng-click="open()">Open me!</button>
+                    <button class="btn btn-gap-v btn-success" ng-click="open()">Open me!</button>
+                    <button class="btn btn-gap-v btn-danger" ng-click="open()">Open me!</button>
                     <div class="divider"></div>
-                    <div class="callout callout-info" ng-show="selected">
-                        <p>Selection from a modal: {{ selected }}</p>
+                    <div class="callout callout-info">
+                        <p>Selection from a modal: <strong>{{ selected }}</strong></p>
                     </div>
                 </div>
             </section>
@@ -462,6 +458,26 @@
         </div>
 
         <div class="col-md-6">
+
+            <!-- Badges -->
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Badges</div>
+                <div class="panel-body text-center">
+                    <p class="text-muted">Badges</p>
+                    <span class="badge">7</span>
+                    <div class="space"></div>
+                    <span class="badge badge-primary">1</span>
+                    <div class="space"></div>
+                    <span class="badge badge-success">2</span>
+                    <div class="space"></div>
+                    <span class="badge badge-info">4</span>
+                    <div class="space"></div>
+                    <span class="badge badge-warning">8</span>
+                    <div class="space"></div>
+                    <span class="badge badge-danger">16</span>
+                </div>
+            </section>
+            <!-- end Badges -->
 
             <!-- Collapse -->
             <section class="panel panel-default">
@@ -557,11 +573,11 @@
             <div class="page-header">
                 <h3>Pagination sizing</h3>
             </div>            
-            <pagination class="pagination-lg" total-items="totalItems" page="currentPage"></pagination>
+            <pagination class="pagination-lg" total-items="totalItems" ng-model="currentPage"></pagination>
             <br>
-            <pagination boundary-links="true" total-items="totalItems" page="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+            <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
             <br>
-            <pagination class="pagination-sm" direction-links="false" total-items="totalItems" page="currentPage" num-pages="smallnumPages"></pagination>
+            <pagination class="pagination-sm" direction-links="false" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages"></pagination>
             <div class="callout callout-info">
                 <p>The selected page no: {{currentPage}}</p>
             </div>
@@ -569,9 +585,9 @@
             <div class="page-header">
                 <h3>Limit the maximum visible buttons</h3>
             </div>
-            <pagination total-items="bigTotalItems" page="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
+            <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
             <br>
-            <pagination total-items="bigTotalItems" page="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+            <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
             <div class="callout callout-info">
                 <p>Page: {{bigCurrentPage}} / {{numPages}}</p>
             </div>                    
@@ -610,7 +626,7 @@
     <section class="panel panel-default">
         <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Alerts</div>
         <div class="panel-body" data-ng-controller="AlertDemoCtrl">
-            <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
             <button class='btn btn-primary' ng-click="addAlert()">Add Alert</button>
         </div>
     </section>

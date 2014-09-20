@@ -347,8 +347,9 @@
     <div class="panel panel-default">
         <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Button dropdowns</strong></div>
         <div class="panel-body">
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Action <span class="caret"></span> </button>
+
+            <div class="btn-group" dropdown is-open="status.isopen1">
+                <button type="button" class="btn btn-default dropdown-toggle"> Action <span class="caret"></span> </button>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="javascript:;">Action</a></li>
                     <li><a href="javascript:;">Another action</a></li>
@@ -358,8 +359,8 @@
                 </ul>
             </div>
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Action <span class="caret"></span> </button>
+            <div class="btn-group" dropdown is-open="status.isopen2">
+                <button type="button" class="btn btn-primary dropdown-toggle"> Action <span class="caret"></span> </button>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="javascript:;">Action</a></li>
                     <li><a href="javascript:;">Another action</a></li>
@@ -369,8 +370,8 @@
                 </ul>
             </div>
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"> Action <span class="caret"></span> </button>
+            <div class="btn-group" dropdown is-open="status.isopen3">
+                <button type="button" class="btn btn-success dropdown-toggle"> Action <span class="caret"></span> </button>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="javascript:;">Action</a></li>
                     <li><a href="javascript:;">Another action</a></li>
@@ -380,8 +381,8 @@
                 </ul>
             </div>
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> Action <span class="caret"></span> </button>
+            <div class="btn-group" dropdown is-open="status.isopen4">
+                <button type="button" class="btn btn-info dropdown-toggle"> Action <span class="caret"></span> </button>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="javascript:;">Action</a></li>
                     <li><a href="javascript:;">Another action</a></li>
@@ -391,8 +392,8 @@
                 </ul>
             </div>
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"> Action <span class="caret"></span> </button>
+            <div class="btn-group" dropdown is-open="status.isopen5">
+                <button type="button" class="btn btn-warning dropdown-toggle"> Action <span class="caret"></span> </button>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="javascript:;">Action</a></li>
                     <li><a href="javascript:;">Another action</a></li>
@@ -402,8 +403,8 @@
                 </ul>
             </div>
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"> Action <span class="caret"></span> </button>
+            <div class="btn-group" dropdown is-open="status.isopen6">
+                <button type="button" class="btn btn-danger dropdown-toggle"> Action <span class="caret"></span> </button>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="javascript:;">Action</a></li>
                     <li><a href="javascript:;">Another action</a></li>
@@ -413,8 +414,8 @@
                 </ul>
             </div>
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown"> Action <span class="caret"></span> </button>
+            <div class="btn-group" dropdown is-open="status.isopen7">
+                <button type="button" class="btn btn-dark dropdown-toggle"> Action <span class="caret"></span> </button>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="javascript:;">Action</a></li>
                     <li><a href="javascript:;">Another action</a></li>
@@ -425,9 +426,9 @@
             </div>
 
             <h5>Dropup variation</h5>
-            <div class="btn-group dropup">
+            <div class="btn-group dropup" dropdown is-open="status.isopen11">
                 <button type="button" class="btn btn-default">Dropup</button>
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <button type="button" class="btn btn-default dropdown-toggle">
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -440,9 +441,9 @@
                 </ul>
             </div>
 
-            <div class="btn-group dropup">
+            <div class="btn-group dropup" dropdown is-open="status.isopen12">
                 <button type="button" class="btn btn-primary">Right Dropup</button>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle">
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -456,7 +457,5 @@
             </div>
         </div>
     </div>
-
-
 
 </div>
