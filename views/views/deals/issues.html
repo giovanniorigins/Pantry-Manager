@@ -1,0 +1,195 @@
+<div class="page page-categories page-tasks">
+
+    <section class="" data-ng-controller="IssuesCtrl">
+        <section data-ng-cloak>
+
+            <div class="row">
+                <div class="panel-body">
+                    <!--<ul class="nav nav-boxed nav-justified">
+                        <li><a href="javascript:;"><i class="color-success fa fa-plus"></i> </a></li>
+
+                    </ul>-->
+                    <a href="javascript:;" ng-click="openIssueModal($event, {}, false)" class="btn btn-success btn-metro">
+                        <i class="fa fa-plus"></i>
+                        <span>Create a Circular</span>
+                    </a>
+                </div>
+            </div>
+
+            <section class="panel panel-default table-dynamic" ng-if="Issues">
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Weekly Circulars</strong></div>
+
+                <div class="table-filters">
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-6">
+                            <form>
+                                <input type="text"
+                                       placeholder="search"
+                                       class="form-control"
+                                       data-ng-model="searchKeywords"
+                                       data-ng-keyup="search()">
+                            </form>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 filter-result-info">
+                        <span>
+                            Showing {{filteredIssues.length}}/{{Issues.record.length}} entries
+                        </span>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-bordered table-striped table-responsive table-hover">
+                    <thead>
+                    <tr>
+                        <th>
+                            <div class="th">
+                                Shop
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click=" order('shop_by_shop_id.title') "
+                                  data-ng-class="{active: row == 'shop_by_shop_id.title'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click=" order('-shop_by_shop_id.title') "
+                                  data-ng-class="{active: row == '-shop_by_shop_id.title'}"></span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="th">
+                                Start Date
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click=" order('start_date') "
+                                  data-ng-class="{active: row == 'start_date'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click=" order('-start_date') "
+                                  data-ng-class="{active: row == '-start_date'}"></span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="th">
+                                End Date
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click=" order(end_date) "
+                                  data-ng-class="{active: row == end_date}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click=" order(-end_date) "
+                                  data-ng-class="{active: row == -end_date}"></span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="th">
+                                Status
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click=" order('status') "
+                                  data-ng-class="{active: row == 'status'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click=" order('-status') "
+                                  data-ng-class="{active: row == '-status'}"></span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="th">Actions</div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-ng-repeat="issue in currentPageIssues" id="issue_{{issue.id}}">
+                        <td>{{issue.shop_by_shop_id.title}}</td>
+                        <td>{{issue.start_date | date:'fullDate'}}</td>
+                        <td>{{issue.end_date | date:'fullDate'}}</td>
+                        <td>{{issue.status}}</td>
+                        <td>
+                            <a href="javascript:;" ng-click="openIssueModal($event, issue, true)" class="btn-icon btn-icon-sm btn-primary"
+                               role="button"
+                               tooltip-placement="top" tooltip="Edit" tooltip-append-to-body="true"><i
+                                    class="fa fa-edit"></i></a>
+                            <a href="javascript:;" class="btn-icon btn-icon-sm btn-danger"
+                               ng-dblclick="deleteIssue(issue)" role="button"
+                               tooltip-placement="top" tooltip="Delete (Double Click)" tooltip-append-to-body="true"><i
+                                    class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <footer class="table-footer">
+                    <div class="row">
+                        <div class="col-md-6 page-num-info">
+                <span>
+                    Show
+                    <select data-ng-model="numPerPage"
+                            data-ng-options="num for num in numPerPageOpt"
+                            data-ng-change="onNumPerPageChange()">
+                    </select>
+                    entries per page
+                </span>
+                        </div>
+                        <div class="col-md-6 text-right pagination-container">
+                            <pagination class="pagination-sm"
+                                        page="currentPage"
+                                        total-items="filteredIssues.length"
+                                        max-size="4"
+                                        on-select-page="select(page)"
+                                        items-per-page="numPerPage"
+                                        rotate="false"
+                                        boundary-links="true"></pagination>
+                        </div>
+                    </div>
+                </footer>
+            </section>
+        </section>
+    </section>
+
+</div>
+
+<script type="text/ng-template" id="issueModal.html">
+    <div class="modal-header">
+        <h3 ng-if="updatemode === true">Update Circular</h3>
+        <h3 ng-if="updatemode === false">Create Circular</h3>
+
+    </div>
+    <div class="modal-body">
+        <form class="" role="form" name="issueModalForm" id="issueModalForm" ng-submit="submitModal();$close()">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-6 col-md-4 col-lg-2">
+                        <label class="" for="thisShop">Shop</label><br>
+                                    <span class="ui-select">
+                                        <select id="thisShop" ng-model="thisIssue.shop_id"
+                                                ng-options="shop.id as shop.title for shop in Shops.record"
+                                                required></select>
+                                    </span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="" for="">Start Date</label>
+
+                        <datepicker ng-model="thisIssue.start_date" min-date="today" show-weeks="false" class="well well-sm"></datepicker>
+
+                        <div class="callout callout-info">
+                            <p>Date is: {{thisIssue.start_date | date:'fullDate'}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="" for="thisEndDate">End Date</label>
+
+                        <datepicker ng-model="thisIssue.end_date" min-date="thisIssue.start_date" show-weeks="false" class="well well-sm"></datepicker>
+
+                        <div class="callout callout-info">
+                            <p>Date is: {{thisIssue.end_date | date:'fullDate'}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<button type="submit" class="btn btn-info">Create Deal</button>-->
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" form="issueModalForm">
+            <span ng-if="updatemode === true">Update</span> Circular
+            <span ng-if="updatemode === false">Create</span> Circular
+        </button>
+        <button class="btn btn-warning" ng-click="$dismiss('Cancel')">Cancel</button>
+    </div>
+</script>

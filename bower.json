@@ -1,0 +1,21 @@
+{
+  "name": "PantryManager",
+  "version": "0.1.0",
+  "description": "Pantry Manager for Cornerstone Family Worship Center",
+  "moduleType": [
+    "es6"
+  ],
+  "authors": [
+    "Jerez Giovanni Bain"
+  ],
+  "license": "BY NC ND",
+  "homepage": "http://gorigins.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

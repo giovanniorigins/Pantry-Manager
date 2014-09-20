@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery Image Cropper Script</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	<link rel="icon" href="data:,">
+	<link rel="stylesheet" type="text/css" href="example.css">
+	<link rel="stylesheet" type="text/css" href="crop.css">
+	<script src="jquery.min.js"></script>
+	<script src="crop.js"></script>
+</head>
+
+<body>
+
+	<!--
+		Allow users to send an image from their computer to the cropper.
+		No actual upload required.
+	-->
+	<input type="file" class="uploadfile" id="uploadfile"/>
+	<div class="newupload">Upload an image?</div>
+
+	<div class="example">
+
+		<!--
+			NOTE: To change the aspect ratio, look in crop.css
+			The class 'default' links the div to the innit(); function
+		-->
+		<div class="default">
+			<div class="cropMain"></div>
+			<div class="cropSlider"></div>
+			<button class="cropButton">Crop</button>
+		</div>
+
+	</div>
+
+	<script>
+
+		//  cropper settings
+		// --------------------------------------------------------------------------
+
+		// create new object crop
+		// you may change the "one" variable to anything
+		var one = new CROP();
+
+		// link the .default class to the crop function
+		one.init('.default');
+
+		// load image into crop
+		one.loadImg('img/one.jpg');
+
+
+		//  on click of button, crop the image
+		// --------------------------------------------------------------------------
+
+		$('body').on("click", "button", function() {
+
+			// grab width and height of .crop-img for canvas
+			var	width = $('.crop-container').width() - 80,  // new image width
+				height = $('.crop-container').height() - 80;  // new image height
+
+			$('canvas').remove();
+			$('.default').after('<canvas width="'+width+'" height="'+height+'" id="canvas"/>');
+
+			var ctx = document.getElementById('canvas').getContext('2d'),
+				img = new Image,
+				w = coordinates(one).w,
+			    h = coordinates(one).h,
+			    x = coordinates(one).x,
+			    y = coordinates(one).y;
+
+			img.src = coordinates(one).image;
+
+			img.onload = function() {
+
+				// draw image
+			    ctx.drawImage(img, x, y, w, h, 0, 0, width, height);
+
+			    // display canvas image
+				$('canvas').addClass('output').show().delay('4000').fadeOut('slow');
+
+				// save the image to server
+				$.ajax({
+					type: "post",
+					dataType: "json",
+					url: "save.php",
+					data: { image: canvas.toDataURL() }
+				})
+				.done(function(data) {
+
+					// You can pull the image URL using data.url, e.g.:
+					// $('body').append('<img src="'+data.url+'" />');
+
+				});
+
+			}
+
+		});
+
+
+		//  on click of .upload class, open .uploadfile (input file)
+		// --------------------------------------------------------------------------
+
+		$('body').on("click", ".newupload", function() {
+		    $('.uploadfile').click();
+		});
+
+		// on input[type="file"] change
+		$('body').change(".uploadfile", function() {
+
+		    loadImageFile();
+
+		    // resets input file
+		    $('.uploadfile').wrap('<form>').closest('form').get(0).reset();
+		    $('.uploadfile').unwrap();
+
+		 });
+
+
+		//  get input type=file IMG through base64 and send it to the cropper
+		// --------------------------------------------------------------------------
+
+		oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+		function loadImageFile() {
+
+		    if(document.getElementById("uploadfile").files.length === 0) return
+
+		    var oFile = document.getElementById("uploadfile").files[0];
+
+		    if(!rFilter.test(oFile.type)) {
+		        return;
+		    }
+
+		  oFReader.readAsDataURL(oFile);
+		}
+
+		oFReader.onload = function (oFREvent) {
+
+		    $('.example').html('<div class="default"><div class="cropMain"></div><div class="cropSlider"></div><button class="cropButton">Crop</button></div>');
+
+			// create new object crop
+			// you may change the "one" variable to anything
+			one = new CROP();
+
+			// link the .default class to the crop function
+			one.init('.default');
+
+			// load image into crop
+			one.loadImg(oFREvent.target.result);
+
+		};
+
+	</script>
+
+
+</body>
+</html>

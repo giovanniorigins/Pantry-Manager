@@ -1,0 +1,252 @@
+<div class="page page-coupon" ng-controller="CouponsCtrl">
+<section  data-ng-cloak>
+
+<accordion close-others="true" class="ui-accordion ui-accordion-info" id="addCoupon">
+	<accordion-group heading="Add Coupon">
+		<form class="" role="form" name="newCouponForm" ng-submit="createCoupon()">
+			<div class="form-group">
+				<label class="" for="newTitle">Title</label>
+				<input ng-model="newCoupon.title" ng-change="toSlug(newCoupon.title)" type="text" class="form-control"
+				       id="newTitle"
+				       placeholder="Enter Title" required>
+			</div>
+			<div class="form-group">
+				<label class="" for="newTitleAlias">Title Alias</label>
+				<input ng-model="newCoupon.title_alias" type="text" class="form-control"
+				       id="newTitleAlias" placeholder="Enter Title Alias" required>
+			</div>
+			<div class="form-group">
+				<label class="" for="newShortDesc">Expire Date</label>
+
+				<div class="input-group ui-datepicker">
+					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+					<input type="text"
+					       class="form-control"
+					       datepicker-popup="dd/MM/yyyy"
+					       show-weeks="false"
+					       ng-model="newCoupon.expire_date"
+					       is-open="opened"
+					       min="today"
+					       datepicker-options="dateOptions"
+					       ng-required="true"
+					       close-text="Close">
+				</div>
+				<div class="callout callout-info">
+					<p>Date is: {{newCoupon.expire_date | date:'fullDate'}}</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Status</label>
+				<label class="ui-radio"><input ng-model="newCoupon.status" name="radio1" type="radio"
+				                               value="active"><span>Active</span></label>
+				<label class="ui-radio"><input ng-model="newCoupon.status" name="radio1" type="radio" value="inactive"
+				                               checked><span>Inactive</span></label>
+				<label class="ui-radio"><input ng-model="newCoupon.status" name="radio1" type="radio" value="suspended"><span>Suspended</span></label>
+				<label class="ui-radio"><input ng-model="newCoupon.status" name="radio1" type="radio"
+				                               value="expired"><span>Expired</span></label>
+			</div>
+			<div class="form-group">
+				<label>Type</label>
+				<label class="ui-radio"><input ng-model="newCoupon.coupon_type" name="radio2" type="radio" value="deal"><span>Deal</span></label>
+				<label class="ui-radio"><input ng-model="newCoupon.coupon_type" name="radio2" type="radio"
+				                               value="printable" checked><span>Printable</span></label>
+				<label class="ui-radio"><input ng-model="newCoupon.coupon_type" name="radio2" type="radio" value="code"><span>Code</span></label>
+			</div>
+			<div class="form-group" ng-if="newCoupon.coupon_type == 'code'">
+				<label class="" for="newCode">Coupon Code</label>
+				<input ng-model="newCoupon.coupon_code" type="text" class="form-control"
+				       id="newCode" placeholder="Enter Coupon Code" required>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-sm-6 col-md-4 col-lg-2">
+						<label class="" for="newCategory">Category</label><br>
+								<span class="ui-select">
+					                <select id="newCategory" ng-model="newCoupon.category_id"
+					                        ng-options="category.id as category.title for category in Categories.record"
+					                        required></select>
+					            </span>
+					</div>
+					<div class="col-sm-6 col-md-4 col-lg-2">
+						<label class="" for="newShop">Shop</label><br>
+								<span class="ui-select">
+					                <select id="newShop" ng-model="newCoupon.shop_id"
+					                        ng-options="shop.id as shop.title for shop in Shops.record"
+					                        required></select>
+					            </span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="" for="newShortDesc">Short Description</label>
+				<textarea ng-model="newCoupon.short_description" id="newShortDesc" class="form-control resizeless"
+				          rows="2" required data-min="3" data-max="100"></textarea>
+			</div>
+			<div class="form-group">
+				<label class="">Description</label>
+
+				<div text-angular ng-model="newCoupon.description" class="ui-editor"></div>
+
+			</div>
+			<div class="form-group">
+				<label class="">Coupon Tags</label>
+				<tags-input ng-model="newCoupon.coupon_tags" id="newTags" class="ui-tags-input" required></tags-input>
+			</div>
+			<div class="form-group">
+				<label class="" for="listPrice">List Price</label>
+				<input ng-model="newCoupon.list_price" type="text" class="form-control"
+				       id="listPrice" placeholder="Enter List Price" required>
+			</div>
+			<div class="form-group">
+				<label class="" for="newPrice">New Price</label>
+				<input ng-model="newCoupon.new_price" type="text" class="form-control"
+				       id="newPrice" placeholder="Enter New Price">
+			</div>
+			<div class="form-group">
+				<label class="" for="discount">Discount</label>
+				<input ng-model="newCoupon.discount" type="text" class="form-control"
+				       id="discount" placeholder="Enter Discount">
+			</div>
+			<hr/>
+			<p>
+				<input type="file" class="uploadfile3" id="uploadfile3" style="display: none;"/>
+
+			<div class="newupload3 btn btn-primary">Upload an image?</div>
+			<a href="javascript:;" class="cropButton2 btn btn-success" ng-click="crop();">Crop &amp; Save Image</a>
+			</p>
+
+
+			<div class="example3">
+
+				<div class="default3">
+					<div class="cropMain"></div>
+					<div class="cropSlider"></div>
+				</div>
+
+			</div>
+			<button type="submit" class="btn btn-info">Create</button>
+		</form>
+	</accordion-group>
+</accordion>
+
+<section class="panel panel-default table-dynamic">
+	<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deals</strong></div>
+
+	<div class="table-filters">
+		<div class="row">
+			<div class="col-sm-4 col-xs-6">
+				<form>
+					<input type="text"
+					       placeholder="search"
+					       class="form-control"
+					       data-ng-model="searchKeywords"
+					       data-ng-keyup="search()">
+				</form>
+			</div>
+			<div class="col-sm-3 col-xs-6 filter-result-info">
+                    <span>
+                        Showing {{filteredCoupons.length}}/{{Coupons.record.length}} entries
+                    </span>
+			</div>
+		</div>
+	</div>
+
+	<table class="table table-bordered table-striped table-responsive">
+		<thead>
+		<tr>
+			<th>
+				<div class="th">
+					Title
+                        <span class="glyphicon glyphicon-chevron-up"
+                              data-ng-click=" order('title') "
+                              data-ng-class="{active: row == 'title'}"></span>
+                        <span class="glyphicon glyphicon-chevron-down"
+                              data-ng-click=" order('-title') "
+                              data-ng-class="{active: row == '-title'}"></span>
+				</div>
+			</th>
+			<th>
+				<div class="th">
+					Shop
+                        <span class="glyphicon glyphicon-chevron-up"
+                              data-ng-click=" order('shop_by_shop_id.title') "
+                              data-ng-class="{active: row == 'shop_by_shop_id.title'}"></span>
+                        <span class="glyphicon glyphicon-chevron-down"
+                              data-ng-click=" order('-shop_by_shop_id.title') "
+                              data-ng-class="{active: row == '-shop_by_shop_id.title'}"></span>
+				</div>
+			</th>
+			<th>
+				<div class="th">
+					Category
+                        <span class="glyphicon glyphicon-chevron-up"
+                              data-ng-click=" order('categories_by_category_id.title') "
+                              data-ng-class="{active: row == 'categories_by_category_id.title'}"></span>
+                        <span class="glyphicon glyphicon-chevron-down"
+                              data-ng-click=" order('-categories_by_category_id.title') "
+                              data-ng-class="{active: row == '-categories_by_category_id.title'}"></span>
+				</div>
+			</th>
+			<th>
+				<div class="th">
+					Status
+                        <span class="glyphicon glyphicon-chevron-up"
+                              data-ng-click=" order('status') "
+                              data-ng-class="{active: row == 'status'}"></span>
+                        <span class="glyphicon glyphicon-chevron-down"
+                              data-ng-click=" order('-status') "
+                              data-ng-class="{active: row == '-status'}"></span>
+				</div>
+			</th>
+			<th>
+				<div class="th">Actions</div>
+			</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr data-ng-repeat="coupon in currentPageCoupons">
+			<td>{{coupon.title}}</td>
+			<td>{{coupon.shop_by_shop_id.title}}</td>
+			<td>{{coupon.categories_by_category_id.title}}</td>
+			<td>{{coupon.status}}</td>
+			<td>
+				<a ng-href="/coupons/{{coupon.id}}" class="btn-icon btn-icon-sm btn-primary"
+				   role="button"
+				   tooltip-placement="top" tooltip="Edit" tooltip-append-to-body="true"><i
+						class="fa fa-edit"></i></a>
+				<a href="javascript:;" class="btn-icon btn-icon-sm btn-danger"
+				   ng-dblclick="deleteCoupon(coupon)" role="button"
+				   tooltip-placement="top" tooltip="Delete (Double Click)" tooltip-append-to-body="true"><i
+						class="fa fa-times"></i></a>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+	<footer class="table-footer">
+		<div class="row">
+			<div class="col-md-6 page-num-info">
+                    <span>
+                        Show
+                        <select data-ng-model="numPerPage"
+                                data-ng-options="num for num in numPerPageOpt"
+                                data-ng-change="onNumPerPageChange()">
+                        </select>
+                        entries per page
+                    </span>
+			</div>
+			<div class="col-md-6 text-right pagination-container">
+				<pagination class="pagination-sm"
+				            page="currentPage"
+				            total-items="filteredCoupons.length"
+				            max-size="4"
+				            on-select-page="select(page)"
+				            items-per-page="numPerPage"
+				            rotate="false"
+				            boundary-links="true"></pagination>
+			</div>
+		</div>
+	</footer>
+</section>
+</section>
+</div>

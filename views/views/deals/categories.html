@@ -1,0 +1,76 @@
+<div class="page page-categories page-tasks">
+
+	<section class="" data-ng-controller="CategoriesCtrl">
+		<section data-ng-cloak>
+
+			<accordion close-others="true" class="ui-accordion ui-accordion-info" id="addCoupon">
+				<accordion-group heading="Add Category">
+					<form class="form-inline" role="form" name="newCategoryForm" ng-submit="createCategory()">
+						<div class="form-group">
+							<label class="sr-only" for="newTitle">Title</label>
+							<input ng-model="newCategory.title" type="text" class="form-control" id="newTitle"
+							       placeholder="Enter Title">
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="newTitleAlias">Title Alias</label>
+							<input ng-model="newCategory.title_alias" type="text" class="form-control"
+							       id="newTitleAlias" placeholder="Enter Title Alias">
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="newIcon">Category Icon</label>
+							<input ng-model="newCategory.category_icon" type="text" class="form-control"
+							       id="newIcon" placeholder="Category Icon">
+						</div>
+						<button type="submit" class="btn btn-info">Create</button>
+					</form>
+				</accordion-group>
+			</accordion>
+
+			<p>
+
+			<form class="form-inline">
+				<div class="form-group">
+					<label class="sr-only" for="search">Search</label>
+					<input type="search" ng-model="search" class="form-control" placeholder="Search" id="search">
+				</div>
+
+				<!--<button type="button" class="btn btn-primary btn-w-lg"><i class="fa fa-plus"> Add Category</i></button>-->
+			</form>
+			</p>
+
+			<div class="row">
+				<div class="col-md-12">
+
+					<accordion close-others="true" class="ui-accordion ui-accordion-info">
+						<accordion-group heading="{{category.title}}"
+						                 data-ng-repeat="category in Categories.record | filter: search"
+						                 class="am-fade-and-slide-right" id="category_{{category.id}}">
+							<form class="form-inline" role="form" name="categoryForm_{{category.id}}">
+								<div class="form-group">
+									<label class="sr-only" for="catTitle">Title</label>
+									<input ng-model="category.title" type="text" class="form-control" id="catTitle"
+									       placeholder="Enter Title">
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="catTitleAlias">Title Alias</label>
+									<input ng-model="category.title_alias" type="text" class="form-control"
+									       id="catTitleAlias" placeholder="Enter Title Alias">
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="catIcon">Category Icon</label>
+									<input ng-model="category.category_icon" type="text" class="form-control"
+									       id="catIcon" placeholder="Category Icon">
+								</div>
+								<button ng-click="updateCategory(category);" class="btn btn-info">Update</button>
+								<button ng-dblclick="deleteCategory(category);" class="btn btn-line-danger">Delete
+								</button>
+							</form>
+
+						</accordion-group>
+					</accordion>
+				</div>
+			</div>
+		</section>
+	</section>
+
+</div>

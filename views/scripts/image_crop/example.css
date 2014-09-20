@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/*-----------------------------------------------------------------------------------*/
+/*	resets
+/*-----------------------------------------------------------------------------------*/
+
+html,body,div,span,a,em,img{border:0;font-size:100%;font:inherit;vertical-align:baseline;text-decoration:none;font-weight:400;margin:0;padding:0}*{outline:none;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-font-smoothing:antialiased;font-smoothing:antialiased}button::-moz-focus-inner{border:0}
+
+/*-----------------------------------------------------------------------------------*/
+/*	examples
+/*-----------------------------------------------------------------------------------*/
+
+.example {
+	padding:40px;
+	position:absolute;
+	text-align:center;
+}
+
+.example .default {
+	display:inline-block;
+	margin-right:25px;
+	z-index:99999;
+	position:absolute;
+}
+
+.output {
+	position:absolute;
+	z-index:55555;
+	top:80px;
+	left:400px;
+	box-shadow:0 0 0 100000px rgba(255,255,255,0.9);
+}
+
+.newupload {
+	border: 3px dashed rgba(0,0,0,0.04);
+	background: rgba(0,0,0,0.02);
+	width: 320px;
+	display: block;
+	margin-left:40px;
+	margin-top: 40px;
+	padding: 20px;
+	box-sizing:border-box;
+	text-align:center;
+	font-family:arial;
+	cursor:pointer;
+}
+.newupload:hover {
+	background: rgba(0,0,0,0.01);
+}
+
+#uploadfile { display:none }

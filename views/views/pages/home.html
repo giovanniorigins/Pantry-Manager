@@ -1,0 +1,483 @@
+<style>
+	/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+	/* Special class on .container surrounding .navbar, used for positioning it into place. */
+	.navbar-wrapper {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: 20;
+	}
+
+	/* Flip around the padding for proper display in narrow viewports */
+	.navbar-wrapper .container {
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.navbar-wrapper .navbar {
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	/* MARKETING CONTENT
+	-------------------------------------------------- */
+
+	/* Pad the edges of the mobile views a bit */
+	.marketing {
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	/* Center align the text within the three columns below the carousel */
+	.marketing .col-lg-4 {
+		margin-bottom: 20px;
+		text-align: center;
+	}
+	.marketing h2 {
+		font-weight: normal;
+	}
+	.marketing .col-lg-4 p {
+		margin-right: 10px;
+		margin-left: 10px;
+	}
+
+	/* Featurettes
+	------------------------- */
+
+	.featurette-divider {
+		margin: 80px 0; /* Space out the Bootstrap <hr> more */
+	}
+
+	/* Thin out the marketing headings */
+	.featurette-heading {
+		font-weight: 300;
+		line-height: 1;
+		letter-spacing: -1px;
+	}
+
+	/* RESPONSIVE CSS
+	-------------------------------------------------- */
+
+	@media (min-width: 768px) {
+
+		/* Remove the edge padding needed for mobile */
+		.marketing {
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+		/* Navbar positioning foo */
+		.navbar-wrapper {
+			margin-top: 20px;
+		}
+		.navbar-wrapper .container {
+			padding-right: 15px;
+			padding-left:  15px;
+		}
+		.navbar-wrapper .navbar {
+			padding-right: 0;
+			padding-left:  0;
+		}
+
+		/* The navbar becomes detached from the top, so we round the corners */
+		.navbar-wrapper .navbar {
+			border-radius: 4px;
+		}
+
+		/* Bump up size of carousel content */
+		.carousel-caption p {
+			margin-bottom: 20px;
+			font-size: 21px;
+			line-height: 1.4;
+		}
+
+		.featurette-heading {
+			font-size: 50px;
+		}
+	}
+
+	@media (min-width: 992px) {
+		.featurette-heading {
+			margin-top: 120px;
+		}
+	}
+
+	#strapslide .slider-container {
+		height: 820px;
+	}
+</style>
+<script>
+	$(document).ready(function() {
+		$('#strapslide').strapslide({
+			animation: "fade, top",
+			speed: 1000,
+			timeout: 5000,
+			responsive: 'resize',
+			autoplay: true,
+			preload: true,
+			pauseOnHover: true,
+			pagination: true,
+			mousewheel: false,
+			keyboard: true,
+			touchscreen: true
+		}, function() {
+			if ($('#strapslide .active').attr('id') == 'slide1') {
+
+				$('#slide1_text1').fxenter('fade, scaleup', 1000);
+				setTimeout(function() {
+					$('#slide1_text1').transition({'scale': 2, 'opacity': 0}, 100);
+				}, 500);
+
+				setTimeout(function() {
+					$('#slide1_text2').fxenter('fade, scaleup', 1000);
+				}, 700);
+				setTimeout(function() {
+					$('#slide1_text2').transition({'scale': 2, 'opacity': 0}, 100);
+				}, 1200)
+
+				setTimeout(function() {
+					$('#slide1_text3').fxenter('fade, scaleup', 1000);
+				}, 1400);
+				setTimeout(function() {
+					$('#slide1_text3').transition({'scale': 2, 'opacity': 0}, 100);
+				}, 1900)
+
+				setTimeout(function() {
+					$('#slide1_text4').fxenter('fade, scaleup', 1000);
+				}, 2100);
+
+			} else if ($('#strapslide .active').attr('id') == 'slide2') {
+
+				$('#slide2_content').fxenter('fade, rotatecw, scaledown', 1000);
+
+			} else if ($('#strapslide .active').attr('id') == 'slide4') {
+
+				$('#slide4_content').fxenter('fade, scaledown', 1000);
+				$('#slide4_ufo').fxenter('fade, scaleup', 500);
+				setTimeout(function() {
+					$('#slide4_ufo').transition({'margin-left': $(window).width() + 400 + 'px'}, 4000)
+				}, 500)
+
+			} else if ($('#strapslide .active').attr('id') == 'slide5') {
+
+				$('#slide5_content').fxenter('fade, scaleup, rotateccw', 1000);
+				$('#slide5_list').fxenter('fade, scaledown, rotatecw', 1000);
+			}
+
+		}, function() {
+			if ($('#strapslide .active').attr('id') == 'slide1') {
+
+				$('#slide1_text4').fxexit("fade, scaleup", 300);
+
+			} else if ($('#strapslide .active').attr('id') == 'slide4') {
+
+				$('#slide4_content').fxexit('fade, scaledown', 500);
+
+			}
+		});
+	})
+</script>
+<div class="" data-ng-controller="HomeCtrl">
+
+	<div class="container-fluid" style="padding:0;">
+		<!-- STRAPSLIDE -->
+		<div class="strapslide" id="strapslide">
+
+			<!-- PRELOADER -->
+			<div class="preloader text-center">
+				<img src="/views/images/strapslide/loader.gif" alt="Loading.." id="loader" />
+			</div>
+			<!-- /PRELOADER -->
+
+			<!-- STRAPSLIDE CONTAINER -->
+			<div class="strapslide-container">
+
+				<!-- SLIDE -->
+				<div class="slide active" data-animation="scaleup, fade" id="slide1">
+					<!-- SLIDE CONTENT -->
+					<div class="slide-content container">
+						<div class="row" data-top="40%" style="margin-top:-40px;" id="slide1_text1">
+							<div class="col-md-6 col-md-offset-3 text-center">
+								<h1 class="background-black">IT'S A BIRD!</h1>
+							</div>
+						</div>
+
+						<div class="row" data-top="40%" style="margin-top:-40px;" id="slide1_text2">
+							<div class="col-md-6 col-md-offset-3 text-center">
+								<h1 class="background-black">IT'S A PLANE!</h1>
+							</div>
+						</div>
+
+						<div class="row" data-top="40%" style="margin-top:-40px;" id="slide1_text3">
+							<div class="col-md-6 col-md-offset-3 text-center">
+								<h1 class="background-black">NO. IT'S STRAPSLIDE</h1>
+							</div>
+						</div>
+
+						<div class="row" data-top="30%" style="margin-top:-75px;" id="slide1_text4">
+							<div class="col-md-6 col-md-offset-3 text-center">
+								<h1 style="color:#fff; text-shadow: 1px 1px 0px #000000; filter: dropshadow(color=#000000, offx=1, offy=1);">
+									DON'T BUY STRAPSLIDE
+								</h1>
+								<h4 class="background-black">IF YOU EXPECT ANYTHING LESS THAN AWESOME</h4>
+								<a href="http://codecanyon.net/item/strapslide-responsive-bootstrap-slider-plugin/5352114" class="btn btn-large btn-primary">BUY NOW</a>
+							</div>
+						</div>
+					</div>
+					<!-- /SLIDE CONTENT -->
+					<!-- BACKGROUND IMAGE -->
+					<img src="/views/images/strapslide/default_background1.jpg" class="background-image" alt=""/>
+					<!-- /BACKGROUND IMAGE -->
+				</div>
+				<!-- /SLIDE -->
+
+				<!-- SLIDE -->
+				<div class="slide" data-animation="fade, rotatecw, scaledown" id="slide2">
+					<!-- SLIDE CONTENT -->
+					<div class="slide-content container">
+
+						<div class="row" data-top="10%" id="slide2_content">
+							<div class="col-md-5 col-md-offset-6">
+								<div class="strapslide-video hidden-phone">
+									<iframe width="560" height="315" src="http://player.vimeo.com/video/6857186" frameborder="0" allowfullscreen></iframe>
+								</div>
+								<h2 class="background-black text-center">IT'S SHOWTIME!</h2>
+								<h4 class="text-center">STRAPSLIDE IS TOTALLY CINEMATIC</h4>
+							</div>
+						</div>
+
+					</div>
+					<!-- /SLIDE CONTENT -->
+					<!-- BACKGROUND IMAGE -->
+					<img src="/views/images/strapslide/default_background2.jpg" class="background-image" alt=""/>
+					<!-- /BACKGROUND IMAGE -->
+				</div>
+				<!-- /SLIDE -->
+
+				<!-- SLIDE -->
+				<div class="slide" data-animation="fade, bottom, scaledown" id="slide4">
+					<!-- SLIDE CONTENT -->
+					<div class="slide-content container">
+						<div class='row' data-top='5%'>
+							<div class='span4'>
+								<img src='/views/images/strapslide/default_ufo.png' alt="" id='slide4_ufo' />
+							</div>
+						</div>
+						<div class="row" data-top="20%" id="slide4_content">
+							<div class="col-md-5 col-md-offset-6">
+								<h2 class="background-blue text-center">
+									YOU LOOK LIKE
+								</h2>
+								<h2 class="text-center">
+									YOU'VE SEEN AN UFO
+								</h2>
+								<p class='muted text-center'>
+									Fortunately, Strapslide has this effect on people.
+								</p>
+							</div>
+						</div>
+
+					</div>
+					<!-- /SLIDE CONTENT -->
+					<!-- BACKGROUND IMAGE -->
+					<img src="/views/images/strapslide/default_background4.jpg" class="background-image" alt=""/>
+					<!-- /BACKGROUND IMAGE -->
+				</div>
+				<!-- /SLIDE -->
+
+				<!-- SLIDE -->
+				<div class="slide" data-animation="fade, rotateccw" id="slide5">
+					<!-- SLIDE CONTENT -->
+					<div class="slide-content container">
+
+						<div class="row" data-top="10%" id="slide5_content">
+							<div class="col-md-5 col-md-offset-1">
+								<h2 class="background-red text-center">WHOA!</h2>
+								<h2 class="text-center">YOU FOUND STRAPSLIDE!</h2>
+								<ul style="list-style-image:url('/views/images/strapslide/liststyle.png');" id="slide5_list">
+									<li><b>UNLIMITED</b> Customizability</li>
+									<li>Based on Bootstrap</li>
+									<li>Touch Enabled</li>
+									<li>Responsive</li>
+									<li>Keyboard Navigation </li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+					<!-- /SLIDE CONTENT -->
+					<!-- BACKGROUND IMAGE -->
+					<img src="/views/images/strapslide/default_background5.jpg" class="background-image" alt=""/>
+					<!-- /BACKGROUND IMAGE -->
+				</div>
+				<!-- /SLIDE -->
+
+				<!-- SLIDE -->
+				<div class="slide">
+					<!-- SLIDE CONTENT -->
+					<div class="slide-content container">
+
+						<div class="strapslide-videofullscreen">
+							<iframe width="560" height="315" src="http://www.youtube.com/embed/x7QqijTXvaU" frameborder="0" allowfullscreen></iframe>
+						</div>
+
+					</div>
+					<!-- /SLIDE CONTENT -->
+					<!-- BACKGROUND IMAGE -->
+					<img src="/views/images/strapslide/default_background1.jpg" class="background-image" alt=""/>
+					<!-- /BACKGROUND IMAGE -->
+				</div>
+				<!-- /SLIDE -->
+
+			</div>
+			<!-- /STRAPSLIDE CONTAINER -->
+
+			<!-- PROGRESS BAR -->
+			<div class="row">
+				<div class="col-md-12" style='padding:0;'>
+					<div class="progress progress-striped">
+						<div class="progress-bar" style="width: 20%;"></div>
+					</div>
+				</div>
+			</div>
+			<!-- /PROGRESS BAR -->
+
+			<!-- NEXT-PREV NAVIGATION -->
+			<div class="row strapslide-nav">
+				<a class="prev btn btn-large btn-primary" href="#">&lt;</a>
+				<a class="next btn btn-large btn-primary" href="#">&gt;</a>
+			</div>
+			<!-- /NEXT-PREV NAVIGATION -->
+
+			<!-- PAGINATION -->
+			<div class="row strapslide-pagination">
+				<div class="col-md-4 col-md-offset-4 text-center">
+					<ul class='pagination'>
+
+					</ul>
+				</div>
+			</div>
+			<!-- /PAGINATION -->
+
+		</div>
+		<!-- /STRAPSLIDE -->
+	</div>
+
+	<div class="container marketing page-down">
+
+		<!-- Three columns of text below the carousel -->
+		<div class="row">
+			<div class="col-lg-4">
+				<img class="img-circle" data-src="holder.js/140x140" alt="140x140"
+				     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+"
+				     style="width: 140px; height: 140px;">
+
+				<h2>Heading</h2>
+
+				<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
+					vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+					cursus magna.</p>
+
+				<p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+			</div>
+			<!-- /.col-lg-4 -->
+			<div class="col-lg-4">
+				<img class="img-circle" data-src="holder.js/140x140" alt="140x140"
+				     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+"
+				     style="width: 140px; height: 140px;">
+
+				<h2>Heading</h2>
+
+				<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras
+					mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+					condimentum nibh.</p>
+
+				<p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+			</div>
+			<!-- /.col-lg-4 -->
+			<div class="col-lg-4">
+				<img class="img-circle" data-src="holder.js/140x140" alt="140x140"
+				     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+"
+				     style="width: 140px; height: 140px;">
+
+				<h2>Heading</h2>
+
+				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
+					porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+					ut fermentum massa justo sit amet risus.</p>
+
+				<p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+			</div>
+			<!-- /.col-lg-4 -->
+		</div>
+		<!-- /.row -->
+
+
+		<!-- START THE FEATURETTES -->
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-7">
+				<h2 class="featurette-heading">First featurette heading. <span
+						class="text-muted">It'll blow your mind.</span></h2>
+
+				<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
+					euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+					tellus ac cursus commodo.</p>
+			</div>
+			<div class="col-md-5">
+				<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500"
+				     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-5">
+				<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500"
+				     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
+			</div>
+			<div class="col-md-7">
+				<h2 class="featurette-heading">Oh yeah, it's that good. <span
+						class="text-muted">See for yourself.</span></h2>
+
+				<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
+					euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+					tellus ac cursus commodo.</p>
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-7">
+				<h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+
+				<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
+					euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+					tellus ac cursus commodo.</p>
+			</div>
+			<div class="col-md-5">
+				<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500"
+				     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<!-- /END THE FEATURETTES -->
+
+
+		<!-- FOOTER -->
+		<footer>
+			<p class="pull-right hidden"><a href="#">Back to top</a></p>
+
+			<p>© 2014 {{main.brand}}. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+		</footer>
+
+	</div>
+</div>

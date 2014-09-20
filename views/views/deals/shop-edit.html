@@ -1,0 +1,59 @@
+<div class="page" ng-controller="ShopEditCtrl">
+	<ol class="breadcrumb-alt">
+		<li><a href="/dashboard">Dashboard</a></li>
+		<li><a href="/shops">Shops</a></li>
+		<li class="active"><a href="">{{shop.title}}</a></li>
+	</ol>
+
+	<section class="panel panel-default">
+		<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Edit Shop</strong></div>
+		<div class="panel-body">
+			<form class="" role="form" name="shopForm">
+				<div class="form-group">
+					<label class="sr-only" for="shopTitle">Title</label>
+					<input ng-model="shop.title" type="text" class="form-control" id="shopTitle"
+					       placeholder="Enter Title">
+				</div>
+				<div class="form-group">
+					<label class="sr-only" for="shopTitleAlias">Title Alias</label>
+					<input ng-model="shop.title_alias" type="text" class="form-control" id="shopTitleAlias"
+					       placeholder="Enter Title Alias">
+				</div>
+				<div class="form-group">
+					<label class="">Active</label>
+					<label class="switch"><input ng-model="shop.status" ng-true-value="active" ng-false-value="inactive"
+					                             type="checkbox"><i></i></label>
+
+					<div class="space"></div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<p>
+						<input type="file" class="uploadfile2" id="uploadfile2" style="display: none;"/>
+
+					<div class="newupload2 btn btn-primary">Upload an image?</div>
+					<button class="cropButton2 btn btn-success" data-ng-click="crop();" data-dismiss="modal"
+					        aria-hidden="true">Crop
+						&amp; Save Image
+					</button>
+					</p>
+
+
+					<div class="example2">
+
+						<div class="default2">
+							<div class="cropMain"></div>
+							<div class="cropSlider"></div>
+						</div>
+
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="panel-footer">
+			<button class="btn btn-success" ng-click="updateShop(shop)">Save Changes</button>
+			<a class="btn btn-primary" href="javascript:;" go-back>Back to Shops</a>
+		</div>
+	</section>
+
+</div>
